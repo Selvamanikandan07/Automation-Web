@@ -49,6 +49,7 @@ public class MyPractice {
 	String Url =driver.getCurrentUrl();
 	System.out.println(Url);
 	Assert.assertEquals(Title, "LetCode with Koushik");
+	//Thread.sleep(5000);
 	
 	   
 	}
