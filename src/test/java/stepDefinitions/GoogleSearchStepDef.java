@@ -112,6 +112,22 @@ public class GoogleSearchStepDef {
 		WebElement HevyLnk = driver.findElement(By.xpath("//div[@id='headingSubtext']/span/button"));
 		wait.until(ExpectedConditions.visibilityOf(HevyLnk));
 		
+		
+		/*
+		 * public void validateMsg(WebElement element,String Expected){
+		 * 
+		 * String Actualmsg = element.getText();
+		 * 
+		 * if(Expected.equals(Actualmsg)){
+		 * 
+		 * System.out.println("Actual  message is matched with Expected"); }
+		 * 
+		 * else
+		 * 
+		 * System.out.println("Actual  message is  not matched with Expected");
+		 */
+				
+		
 
 		/*
 		 * FluentWait<WebDriver> fluentWait = new FluentWait<>(driver);
