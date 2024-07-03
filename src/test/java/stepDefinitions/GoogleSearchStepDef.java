@@ -1,6 +1,6 @@
 package stepDefinitions;
 
-import static org.junit.Assert.assertEquals;
+
 
 import java.time.Duration;
 import java.util.ArrayList;
@@ -37,20 +37,23 @@ import objectRepo.AutomationSiteobj;
 
 public class GoogleSearchStepDef {
 	
-	WebDriver driver =null;
+	WebDriver driver=null;
 	
 	
-	AutomationSiteobj SiteObj = new AutomationSiteobj(driver);
+	//AutomationSiteobj SiteObj = new AutomationSiteobj(driver);
 	
 
-	@Given("browser is open")
+	@Given("browser is opened")
 	public void browser_is_open() {
 		
-		String Prjpath = System.getProperty("user.dir");
 		
-		System.setProperty("webdriver.chrome.driver",Prjpath+"/src/test/resources/Drivers/chromedriver.exe ");
-		
-		driver = new ChromeDriver();
+		  String Prjpath = System.getProperty("user.dir");
+		  
+		  System.setProperty("webdriver.chrome.driver",Prjpath+"/src/test/resources/Drivers/chromedriver.exe ");
+		  
+		  driver = new ChromeDriver();
+		 
+		//WebDriver driver = WebDriverManager.chromedriver().create();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(40));
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(40));
         driver.manage().window().maximize();
@@ -64,7 +67,7 @@ public class GoogleSearchStepDef {
 		//driver.switchTo().frame("callout");
 		//SiteObj.Staysignout_Btn.click();
 		//driver.findElement(By.xpath("//button[@aria-label='Stay signed out']")).click();
-		//driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
+		//dri ver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
 		//driver.switchTo().defaultContent();
 		
 
@@ -98,7 +101,21 @@ public class GoogleSearchStepDef {
 		driver.findElement(By.xpath("//a[@href='https://www.hevy.com/signup?utm_source=hevyapp.com&utm_medium=menu']")).click();	
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//p[contains(text(),'Sign up with Google')]")));
+		//Wait<WebDriver> w1 = new FluentWait<WebDriver>(driver);
+		/*
+		 * .withTimeout(Duration.ofSeconds(30)) .pollingEvery(Duration.ofSeconds(2));
+		 * .ignoring(NoSuchElementException.class); WebElement element =
+		 * wait.until(webDriver ->
+		 * webDriver.findElement(By.xpath("//p[contains(text(),'Sign up with Google')]")
+		 * ));
+		 */
+		/*
+		 * element.sendKeys(Keys.DOWN); element.sendKeys(Keys.BACK_SPACE);
+		 * element.sendKeys(Keys.CONTROL + "c");
+		 */
 		
+		WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofSeconds(25));
+		wait2.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//p[contains(text(),'Sign up with Google')]"))));
 		driver.findElement(By.xpath("//p[contains(text(),'Sign up with Google')]")).click();
 		Set<String> windows = driver.getWindowHandles();
 		List<String> list = new ArrayList<String>(windows);
@@ -151,8 +168,8 @@ public class GoogleSearchStepDef {
 		
 		WebElement  Articles =  driver.findElement(By.xpath("//li[@id='menu-item-5153']/div/a"));
 		Actions Ac = new Actions(driver);
-		Ac.moveToElement(Articles);
-		//Articles.click();
+		Ac.moveToElement(Articles).perform();
+		
 		
 
 		List<WebElement> List1   = driver.findElements(By.xpath("//ul[@class='sub-menu']/li/a"));
@@ -161,6 +178,10 @@ public class GoogleSearchStepDef {
 			String str2 = List1.get(i).getText();
 			System.out.println(str2);
 		}
+		
+		System.out.println(List1.get(List1.size()-2).getText());
+		List1.get(List1.size()-2).click();
+		
 			
 		
 		
@@ -169,13 +190,6 @@ public class GoogleSearchStepDef {
 	
 	}
 	
-	@And("^And user is navigated to Makemytrip site$")
-	public void user_is_navigated_to_Makemytrip_site() throws InterruptedException {
-		
-	
-
-		
-	}
 	
 
      
