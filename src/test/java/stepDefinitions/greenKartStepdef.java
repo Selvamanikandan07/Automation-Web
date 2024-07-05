@@ -32,7 +32,7 @@ public class greenKartStepdef {
 		 * ChromeDriver();
 		 */
 		  
-	      WM = new WebDriverManager(driver);
+	      WM = new WebDriverManager();
 	      WM.driverInitialisation();
 	      WM.loadUrl("https://rahulshettyacademy.com/seleniumPractise");
 		  Hp = new GreenkartHomePage(driver);

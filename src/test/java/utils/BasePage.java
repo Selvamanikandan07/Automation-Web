@@ -18,6 +18,12 @@ public class BasePage {
 		  this.driver=driver;
 	  
 	  }
+	  
+	public void getUrl(String url) {
+		
+		driver.get(url);
+		
+	}
 	 
 
 	public void waitForElementisVisible(WebElement element, int TimeOut) {
