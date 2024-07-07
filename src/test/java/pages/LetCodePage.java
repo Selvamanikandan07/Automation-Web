@@ -22,7 +22,6 @@ public class LetCodePage {
 	WebDriver driver;
 	private WebDriverManager WM;
 	 private letCodeObj LC;
-	 //private BasePage BP;
 	 
 	
 
