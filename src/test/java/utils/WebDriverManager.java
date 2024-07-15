@@ -14,9 +14,23 @@ public class WebDriverManager {
 
 	public WebDriverManager() {
 		
-		this.driver=driverInitialisation();
+		try {
+			CommonUtils commonUtils = new CommonUtils();
+			commonUtils.loadproperties();
+			
+			if(driver==null) {
+			
+				this.driver=driverInitialisation();
+
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
+	
+	 
 
    
    public WebDriver driverInitialisation() {
